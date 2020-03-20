@@ -5,6 +5,12 @@
  */
 package examen2_paulinaeuceda;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author euced
@@ -14,8 +20,32 @@ public class Examen extends javax.swing.JFrame {
     /**
      * Creates new form Examen
      */
+    String nombre = "Pau", contra = "1";
+    int con = 0;
+
     public Examen() {
         initComponents();
+
+        Image a;
+        a = Toolkit.getDefaultToolkit().createImage("./src/Imagenes/back_background.jpg").getScaledInstance(734, 455, 0);
+        jl_op.setIcon(new ImageIcon(a));
+
+        setResizable(false);
+        this.setLocationRelativeTo(null);
+        HoraHilo hora = new HoraHilo(jl_hora);
+        Thread hilo = new Thread(hora);
+        hilo.start();
+
+        area2.append("\n" + "Nombre del cliente: " + "pau" + "\n");
+        area2.append("\n");
+        area2.append("\n" + "Fecha actual: " + new Date() + "\n");
+        area2.append("\n");
+        area2.append("\n" + "Especificaciones de tu compra: " + "\n");
+        area2.append("\n" + "Membresía para cliente:  " + "      " + "      15.85$" + "\n");
+
+        area2.append("\n" + "Subtotal de la compra: " + "bruuu" + " $" + "\n");
+        area2.append("\n" + "ISV: " + "     0.15" + " $" + "\n");
+        area2.append("\n" + "Total:     " + "neles" + " $" + "\n");
     }
 
     /**
@@ -27,21 +57,621 @@ public class Examen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jd_iniciar = new javax.swing.JDialog();
+        tf_userL = new javax.swing.JTextField();
+        pf_contra = new javax.swing.JPasswordField();
+        jb_login = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jd_registrar = new javax.swing.JDialog();
+        tf_idR = new javax.swing.JTextField();
+        tf_primer = new javax.swing.JTextField();
+        tf_segundo = new javax.swing.JTextField();
+        tf_primerA = new javax.swing.JTextField();
+        tf_segundoA = new javax.swing.JTextField();
+        pf_contraR = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        jYearChooser2 = new com.toedter.calendar.JYearChooser();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jd_trans = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jd_opcion = new javax.swing.JDialog();
+        jl_op = new javax.swing.JLabel();
+        jd_cliente = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner2 = new javax.swing.JSpinner();
+        jButton6 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jSpinner3 = new javax.swing.JSpinner();
+        jSpinner4 = new javax.swing.JSpinner();
+        jButton7 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaPersonal = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jSpinner5 = new javax.swing.JSpinner();
+        jSpinner6 = new javax.swing.JSpinner();
+        jButton8 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaTodos = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        tf_idC = new javax.swing.JTextField();
+        jp_spinner = new javax.swing.JSpinner();
+        ft_cuentaC = new javax.swing.JFormattedTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaPersonalE = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel7 = new javax.swing.JPanel();
+        jd_atms = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jd_mantener = new javax.swing.JDialog();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jSpinner7 = new javax.swing.JSpinner();
+        jSpinner8 = new javax.swing.JSpinner();
+        jButton9 = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        jb_iniciar1 = new javax.swing.JButton();
+        jb_registrar1 = new javax.swing.JButton();
+        jl_hora = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        area2 = new javax.swing.JTextArea();
+        jButton14 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lb_foto = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jd_iniciar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jd_iniciar.getContentPane().add(tf_userL, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 210, 40));
+        jd_iniciar.getContentPane().add(pf_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 210, 50));
+
+        jb_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
+        jb_login.setText("Log in");
+        jb_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_loginMouseClicked(evt);
+            }
+        });
+        jd_iniciar.getContentPane().add(jb_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 120, 40));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton5.setText("Regresar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jd_iniciar.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login (1).png"))); // NOI18N
+        jd_iniciar.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, 0, 490, 470));
+
+        jd_registrar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jd_registrar.getContentPane().add(tf_idR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 120, 30));
+        jd_registrar.getContentPane().add(tf_primer, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 120, 30));
+        jd_registrar.getContentPane().add(tf_segundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 120, 30));
+        jd_registrar.getContentPane().add(tf_primerA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 120, 30));
+        jd_registrar.getContentPane().add(tf_segundoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 120, 30));
+        jd_registrar.getContentPane().add(pf_contraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 120, 40));
+
+        jButton1.setText("Crear Cliente");
+        jd_registrar.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 140, 30));
+
+        jButton2.setText("Crear Usuario de Mantenimiento");
+        jd_registrar.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 200, 30));
+
+        jLabel3.setText("ID");
+        jd_registrar.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
+
+        jLabel4.setText("Primer Nombre");
+        jd_registrar.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+
+        jLabel5.setText("Segundo Nombre");
+        jd_registrar.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
+
+        jLabel6.setText("Primer Apellido");
+        jd_registrar.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+
+        jLabel7.setText("Segundo Apellido");
+        jd_registrar.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
+
+        jLabel8.setText("Contraseña");
+        jd_registrar.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton4.setText("Regresar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jd_registrar.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
+
+        jLabel9.setText("Año de Afiliación");
+        jd_registrar.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
+        jd_registrar.getContentPane().add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 70, 30));
+        jd_registrar.getContentPane().add(jYearChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 70, 30));
+
+        jLabel31.setText("Año de Nacimiento");
+        jd_registrar.getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papers.co-se68-blurry-background-sunrise-gradation-blur-40-wallpaper.jpg"))); // NOI18N
+        jd_registrar.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 410));
+
+        jd_trans.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setText("jLabel10");
+        jd_trans.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 476, -1, -1));
+
+        jLabel11.setText("jLabel11");
+        jd_trans.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 180, 40));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton3.setText("Regresar");
+        jd_trans.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
+
+        jd_opcion.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jl_op.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back_background.jpg"))); // NOI18N
+        jd_opcion.getContentPane().add(jl_op, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 450));
+
+        jd_cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setText("Cantidad a retirar");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+
+        jLabel18.setText("Billetes");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+
+        jLabel19.setText("100");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+
+        jLabel20.setText("500");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 40, -1));
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel1.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 40, -1));
+
+        jButton6.setText("Retirar");
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 80, -1));
+
+        jTabbedPane1.addTab("Retiros", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setText("Cantidad a retirar");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
+
+        jLabel22.setText("Billetes");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+
+        jLabel23.setText("100");
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+
+        jLabel24.setText("500");
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel2.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 40, -1));
+
+        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel2.add(jSpinner4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 40, -1));
+
+        jButton7.setText("Depositar");
+        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 80, -1));
+
+        tablaPersonal.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "# Cuenta", "Saldo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaPersonal);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 350, 150));
+
+        jTabbedPane1.addTab("Ingresos a cuenta personal", jPanel2);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel25.setText("Cantidad a retirar");
+        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
+
+        jLabel26.setText("Billetes");
+        jPanel3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+
+        jLabel27.setText("100");
+        jPanel3.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+
+        jLabel28.setText("500");
+        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+
+        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel3.add(jSpinner5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 40, -1));
+
+        jSpinner6.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel3.add(jSpinner6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 40, -1));
+
+        jButton8.setText("Depositar");
+        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 80, -1));
+
+        tablaTodos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "# Cuenta", "Saldo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tablaTodos);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 350, 150));
+
+        jTabbedPane1.addTab("Ingreso a cuentas externas", jPanel3);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setText("# Cuenta");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+
+        jLabel29.setText("Saldo");
+        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+
+        jLabel30.setText("ID Propio");
+        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        jPanel4.add(tf_idC, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 130, 30));
+
+        jp_spinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel4.add(jp_spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 80, 30));
+
+        ft_cuentaC.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#####"))));
+        jPanel4.add(ft_cuentaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 120, 30));
+
+        jTabbedPane1.addTab("Crear Cuenta", jPanel4);
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaPersonalE.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "# Cuenta", "Saldo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablaPersonalE);
+
+        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 350, 150));
+
+        jTabbedPane1.addTab("Estado de Cuenta", jPanel5);
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "# Cuenta", "Descripcion", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jTable1);
+
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, 150));
+
+        jTabbedPane1.addTab("Transacciones", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 675, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 342, Short.MAX_VALUE)
         );
+
+        jTabbedPane1.addTab("Salir", jPanel7);
+
+        jd_cliente.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 370));
+
+        jd_atms.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setText("Seleccione el ATM");
+        jd_atms.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jd_atms.getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, 40));
+
+        jButton12.setText("Entrar");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+        jd_atms.getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
+
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton13.setText("Salir");
+        jd_atms.getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel16.setText("jLabel16");
+        jd_atms.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+
+        jd_mantener.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setText("Cantidad a ingresar");
+        jd_mantener.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+
+        jLabel33.setText("Billetes");
+        jd_mantener.getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+
+        jLabel34.setText("100");
+        jd_mantener.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
+
+        jLabel35.setText("500");
+        jd_mantener.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+
+        jSpinner7.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jd_mantener.getContentPane().add(jSpinner7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, -1));
+
+        jSpinner8.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jd_mantener.getContentPane().add(jSpinner8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 80, -1));
+
+        jButton9.setText("Retirar");
+        jd_mantener.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 80, -1));
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papers.co-se68-blurry-background-sunrise-gradation-blur-40-wallpaper.jpg"))); // NOI18N
+        jd_mantener.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 420));
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jb_iniciar1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        jb_iniciar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iniciar.png"))); // NOI18N
+        jb_iniciar1.setText("Entrar");
+        jb_iniciar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_iniciar1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jb_iniciar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 190, 40));
+
+        jb_registrar1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        jb_registrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registrar.png"))); // NOI18N
+        jb_registrar1.setText("Crear Usuario");
+        jb_registrar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_registrar1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jb_registrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 190, 40));
+
+        jl_hora.setText("jLabel12");
+        getContentPane().add(jl_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 150, 20));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+
+        area2.setColumns(20);
+        area2.setRows(5);
+        jScrollPane1.setViewportView(area2);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 280, 200));
+
+        jButton14.setText("Crear ATM");
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 190, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/website.png"))); // NOI18N
+        jLabel2.setText("\n");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 560, 470));
+
+        lb_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lable.jpg"))); // NOI18N
+        getContentPane().add(lb_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_iniciar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_iniciar1MouseClicked
+        // TODO add your handling code here:
+        jd_atms.pack();
+        jd_atms.setModal(true);
+        jd_atms.setLocationRelativeTo(this);
+        jd_atms.setVisible(true);
+    }//GEN-LAST:event_jb_iniciar1MouseClicked
+
+    private void jb_registrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_registrar1MouseClicked
+        // TODO add your handling code here:
+        jd_registrar.pack();
+        jd_registrar.setModal(true);
+        jd_registrar.setLocationRelativeTo(this);
+        jd_registrar.setVisible(true);
+    }//GEN-LAST:event_jb_registrar1MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+        jb_login.setEnabled(true);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jb_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_loginMouseClicked
+        // TODO add your handling code here:
+        boolean flag = true;
+
+        //            adminBanda ban = new adminBanda("./Banda.cbm");
+        //            ban.cargarArchivo();
+        //            ArrayList band = ban.getListaBandas();
+        ////            for (int i = 0; i < band.size(); i++) {
+        if (nombre.equals(tf_userL.getText()) && contra.equals(pf_contra.getText())) {
+
+            flag = false;
+        }
+        //            }
+
+        if (flag == false) {
+            JOptionPane.showMessageDialog(null, "Se inició sesión con éxito");
+
+            jd_iniciar.setVisible(false);
+            jd_cliente.pack();
+            jd_cliente.setModal(true);
+            jd_cliente.setLocationRelativeTo(this);
+            jd_cliente.setVisible(true);
+        } else {
+            con++;
+        }
+
+        if (con >= 5) {
+            JOptionPane.showMessageDialog(null, "Lo ha intentado mas de cinco veces. Se guardra registro. Salga y vuelva a entrar para seguir intentando");
+            jb_login.setEnabled(false);
+        }
+
+        tf_userL.setText("");
+        pf_contra.setText("");
+    }//GEN-LAST:event_jb_loginMouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        jd_iniciar.setVisible(false);
+        con = 0;
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        jd_registrar.setVisible(false);
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+        jd_iniciar.pack();
+        jd_iniciar.setModal(true);
+        jd_iniciar.setLocationRelativeTo(this);
+        jd_iniciar.setVisible(true);
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+        jd_cliente.setVisible(false);
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +709,106 @@ public class Examen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea area2;
+    private javax.swing.JFormattedTextField ft_cuentaC;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JSpinner jSpinner5;
+    private javax.swing.JSpinner jSpinner6;
+    private javax.swing.JSpinner jSpinner7;
+    private javax.swing.JSpinner jSpinner8;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private com.toedter.calendar.JYearChooser jYearChooser1;
+    private com.toedter.calendar.JYearChooser jYearChooser2;
+    private javax.swing.JButton jb_iniciar1;
+    private javax.swing.JButton jb_login;
+    private javax.swing.JButton jb_registrar1;
+    private javax.swing.JDialog jd_atms;
+    private javax.swing.JDialog jd_cliente;
+    private javax.swing.JDialog jd_iniciar;
+    private javax.swing.JDialog jd_mantener;
+    private javax.swing.JDialog jd_opcion;
+    private javax.swing.JDialog jd_registrar;
+    private javax.swing.JDialog jd_trans;
+    private javax.swing.JLabel jl_hora;
+    private javax.swing.JLabel jl_op;
+    private javax.swing.JSpinner jp_spinner;
+    private javax.swing.JLabel lb_foto;
+    private javax.swing.JPasswordField pf_contra;
+    private javax.swing.JPasswordField pf_contraR;
+    private javax.swing.JTable tablaPersonal;
+    private javax.swing.JTable tablaPersonalE;
+    private javax.swing.JTable tablaTodos;
+    private javax.swing.JTextField tf_idC;
+    private javax.swing.JTextField tf_idR;
+    private javax.swing.JTextField tf_primer;
+    private javax.swing.JTextField tf_primerA;
+    private javax.swing.JTextField tf_segundo;
+    private javax.swing.JTextField tf_segundoA;
+    private javax.swing.JTextField tf_userL;
     // End of variables declaration//GEN-END:variables
 }
