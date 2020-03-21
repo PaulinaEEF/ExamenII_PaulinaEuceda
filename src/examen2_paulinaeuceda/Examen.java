@@ -7,9 +7,15 @@ package examen2_paulinaeuceda;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +32,11 @@ public class Examen extends javax.swing.JFrame {
     public Examen() {
         initComponents();
 
+        adminATM ban = new adminATM("./ATM.cbm");
+        ban.cargarArchivo();
+        DefaultComboBoxModel modelo1 = new DefaultComboBoxModel(ban.getListatms().toArray());
+        cb_atm.setModel(modelo1);
+
         Image a;
         a = Toolkit.getDefaultToolkit().createImage("./src/Imagenes/back_background.jpg").getScaledInstance(734, 455, 0);
         jl_op.setIcon(new ImageIcon(a));
@@ -36,16 +47,6 @@ public class Examen extends javax.swing.JFrame {
         Thread hilo = new Thread(hora);
         hilo.start();
 
-        area2.append("\n" + "Nombre del cliente: " + "pau" + "\n");
-        area2.append("\n");
-        area2.append("\n" + "Fecha actual: " + new Date() + "\n");
-        area2.append("\n");
-        area2.append("\n" + "Especificaciones de tu compra: " + "\n");
-        area2.append("\n" + "Membresía para cliente:  " + "      " + "      15.85$" + "\n");
-
-        area2.append("\n" + "Subtotal de la compra: " + "bruuu" + " $" + "\n");
-        area2.append("\n" + "ISV: " + "     0.15" + " $" + "\n");
-        area2.append("\n" + "Total:     " + "neles" + " $" + "\n");
     }
 
     /**
@@ -62,9 +63,10 @@ public class Examen extends javax.swing.JFrame {
         pf_contra = new javax.swing.JPasswordField();
         jb_login = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jd_registrar = new javax.swing.JDialog();
-        tf_idR = new javax.swing.JTextField();
         tf_primer = new javax.swing.JTextField();
         tf_segundo = new javax.swing.JTextField();
         tf_primerA = new javax.swing.JTextField();
@@ -72,7 +74,6 @@ public class Examen extends javax.swing.JFrame {
         pf_contraR = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -80,8 +81,8 @@ public class Examen extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
-        jYearChooser2 = new com.toedter.calendar.JYearChooser();
+        yc_naci = new com.toedter.calendar.JYearChooser();
+        yc_afi = new com.toedter.calendar.JYearChooser();
         jLabel31 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jd_trans = new javax.swing.JDialog();
@@ -97,19 +98,25 @@ public class Examen extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        jp_bille1 = new javax.swing.JSpinner();
+        jp_bille5 = new javax.swing.JSpinner();
         jButton6 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tablaPersonalR = new javax.swing.JTable();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
+        jp_b1 = new javax.swing.JSpinner();
+        jp_b5 = new javax.swing.JSpinner();
         jButton7 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaPersonal = new javax.swing.JTable();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -120,23 +127,31 @@ public class Examen extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaTodos = new javax.swing.JTable();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         tf_idC = new javax.swing.JTextField();
-        jp_spinner = new javax.swing.JSpinner();
+        jp_saldoC = new javax.swing.JSpinner();
         ft_cuentaC = new javax.swing.JFormattedTextField();
+        jButton16 = new javax.swing.JButton();
+        jLabel45 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaPersonalE = new javax.swing.JTable();
+        jLabel46 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaT = new javax.swing.JTable();
+        jLabel47 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        jButton15 = new javax.swing.JButton();
+        jLabel48 = new javax.swing.JLabel();
         jd_atms = new javax.swing.JDialog();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_atm = new javax.swing.JComboBox<>();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -145,20 +160,38 @@ public class Examen extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jSpinner7 = new javax.swing.JSpinner();
-        jSpinner8 = new javax.swing.JSpinner();
+        jp_bi1 = new javax.swing.JSpinner();
+        jp_bi5 = new javax.swing.JSpinner();
         jButton9 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
+        jd_crearATM = new javax.swing.JDialog();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        yc_anioCA = new com.toedter.calendar.JYearChooser();
+        jp_100CA = new javax.swing.JSpinner();
+        jp_500CA = new javax.swing.JSpinner();
+        tf_ubica = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        tf_mant = new javax.swing.JTextField();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jd_recibo = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        area2 = new javax.swing.JTextArea();
+        jLabel54 = new javax.swing.JLabel();
         jb_iniciar1 = new javax.swing.JButton();
         jb_registrar1 = new javax.swing.JButton();
         jl_hora = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        area2 = new javax.swing.JTextArea();
         jButton14 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lb_foto = new javax.swing.JLabel();
 
+        jd_iniciar.setUndecorated(true);
         jd_iniciar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jd_iniciar.getContentPane().add(tf_userL, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 210, 40));
         jd_iniciar.getContentPane().add(pf_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 210, 50));
@@ -181,11 +214,17 @@ public class Examen extends javax.swing.JFrame {
         });
         jd_iniciar.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
 
+        jLabel52.setText("ID");
+        jd_iniciar.getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+
+        jLabel53.setText("Contraseña");
+        jd_iniciar.getContentPane().add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login (1).png"))); // NOI18N
         jd_iniciar.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-22, 0, 490, 470));
 
+        jd_registrar.setUndecorated(true);
         jd_registrar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jd_registrar.getContentPane().add(tf_idR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 120, 30));
         jd_registrar.getContentPane().add(tf_primer, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 120, 30));
         jd_registrar.getContentPane().add(tf_segundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 120, 30));
         jd_registrar.getContentPane().add(tf_primerA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 120, 30));
@@ -193,13 +232,20 @@ public class Examen extends javax.swing.JFrame {
         jd_registrar.getContentPane().add(pf_contraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 120, 40));
 
         jButton1.setText("Crear Cliente");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jd_registrar.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 140, 30));
 
         jButton2.setText("Crear Usuario de Mantenimiento");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jd_registrar.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 200, 30));
-
-        jLabel3.setText("ID");
-        jd_registrar.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
 
         jLabel4.setText("Primer Nombre");
         jd_registrar.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
@@ -226,15 +272,15 @@ public class Examen extends javax.swing.JFrame {
         jd_registrar.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
 
         jLabel9.setText("Año de Afiliación");
-        jd_registrar.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
-        jd_registrar.getContentPane().add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 70, 30));
-        jd_registrar.getContentPane().add(jYearChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 70, 30));
+        jd_registrar.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+        jd_registrar.getContentPane().add(yc_naci, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 70, 30));
+        jd_registrar.getContentPane().add(yc_afi, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 120, 30));
 
         jLabel31.setText("Año de Nacimiento");
         jd_registrar.getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papers.co-se68-blurry-background-sunrise-gradation-blur-40-wallpaper.jpg"))); // NOI18N
-        jd_registrar.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 410));
+        jd_registrar.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 410));
 
         jd_trans.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -255,59 +301,100 @@ public class Examen extends javax.swing.JFrame {
 
         jd_cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane1MouseClicked(evt);
-            }
-        });
-
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel17.setText("Cantidad a retirar");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
         jLabel18.setText("Billetes");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, -1));
 
         jLabel19.setText("100");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, -1));
 
         jLabel20.setText("500");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 40, -1));
+        jp_bille1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel1.add(jp_bille1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 40, -1));
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jPanel1.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 40, -1));
+        jp_bille5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel1.add(jp_bille5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 40, -1));
 
         jButton6.setText("Retirar");
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 80, -1));
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 80, -1));
+
+        tablaPersonalR.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "# Cuenta", "Saldo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tablaPersonalR);
+
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 350, 150));
+
+        jLabel49.setText("Elija la cuenta");
+        jPanel1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/free-blurry-background-1636594.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 340));
 
         jTabbedPane1.addTab("Retiros", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel21.setText("Cantidad a retirar");
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Cantidad a ingresar");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
 
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Billetes");
         jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
 
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("100");
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("500");
         jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jPanel2.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 40, -1));
+        jp_b1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel2.add(jp_b1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 40, -1));
 
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jPanel2.add(jSpinner4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 40, -1));
+        jp_b5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel2.add(jp_b5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 40, -1));
 
         jButton7.setText("Depositar");
-        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 80, -1));
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 80, -1));
 
         tablaPersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -336,11 +423,17 @@ public class Examen extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 350, 150));
 
+        jLabel50.setText("Elija la cuenta");
+        jPanel2.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Red-Ferrari-Car-Background.jpg"))); // NOI18N
+        jPanel2.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 340));
+
         jTabbedPane1.addTab("Ingresos a cuenta personal", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel25.setText("Cantidad a retirar");
+        jLabel25.setText("Cantidad a depositar");
         jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
 
         jLabel26.setText("Billetes");
@@ -359,7 +452,12 @@ public class Examen extends javax.swing.JFrame {
         jPanel3.add(jSpinner6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 40, -1));
 
         jButton8.setText("Depositar");
-        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 80, -1));
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 80, -1));
 
         tablaTodos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -388,25 +486,43 @@ public class Examen extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 350, 150));
 
+        jLabel51.setText("Elija la cuenta");
+        jPanel3.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back_background.jpg"))); // NOI18N
+        jPanel3.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 340));
+
         jTabbedPane1.addTab("Ingreso a cuentas externas", jPanel3);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setText("# Cuenta");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
         jLabel29.setText("Saldo");
-        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
         jLabel30.setText("ID Propio");
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
-        jPanel4.add(tf_idC, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 130, 30));
+        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        jPanel4.add(tf_idC, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 130, 30));
 
-        jp_spinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jPanel4.add(jp_spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 80, 30));
+        jp_saldoC.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jPanel4.add(jp_saldoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 80, 30));
 
         ft_cuentaC.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#####"))));
-        jPanel4.add(ft_cuentaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 120, 30));
+        jPanel4.add(ft_cuentaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 120, 30));
+
+        jButton16.setText("Crear");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 110, -1));
+
+        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondof - Copy.jpg"))); // NOI18N
+        jLabel45.setText("jLabel45");
+        jPanel4.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 340));
 
         jTabbedPane1.addTab("Crear Cuenta", jPanel4);
 
@@ -437,18 +553,18 @@ public class Examen extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tablaPersonalE);
 
-        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 350, 150));
+        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 350, 150));
+
+        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/otro.jpg"))); // NOI18N
+        jPanel5.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 340));
 
         jTabbedPane1.addTab("Estado de Cuenta", jPanel5);
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "# Cuenta", "Descripcion", "Fecha"
@@ -469,34 +585,47 @@ public class Examen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable1);
+        jScrollPane5.setViewportView(tablaT);
 
-        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, 150));
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, 150));
+
+        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ventana2 - Copy.jpg"))); // NOI18N
+        jLabel47.setToolTipText("");
+        jPanel6.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 340));
 
         jTabbedPane1.addTab("Transacciones", jPanel6);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 675, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 342, Short.MAX_VALUE)
-        );
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
+        jButton15.setText("Salir");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+        jPanel7.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 130, 40));
+
+        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ventana2 - Copy.jpg"))); // NOI18N
+        jPanel7.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 340));
 
         jTabbedPane1.addTab("Salir", jPanel7);
 
-        jd_cliente.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 370));
+        jd_cliente.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 370));
 
+        jd_atms.setUndecorated(true);
         jd_atms.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setText("Seleccione el ATM");
         jd_atms.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jd_atms.getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, 40));
+        cb_atm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cb_atm.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_atmItemStateChanged(evt);
+            }
+        });
+        jd_atms.getContentPane().add(cb_atm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, 40));
 
         jButton12.setText("Entrar");
         jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -508,6 +637,11 @@ public class Examen extends javax.swing.JFrame {
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
         jButton13.setText("Salir");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
         jd_atms.getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel16.setText("jLabel16");
@@ -519,7 +653,7 @@ public class Examen extends javax.swing.JFrame {
         jd_mantener.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
 
         jLabel33.setText("Billetes");
-        jd_mantener.getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        jd_mantener.getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
         jLabel34.setText("100");
         jd_mantener.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
@@ -527,19 +661,83 @@ public class Examen extends javax.swing.JFrame {
         jLabel35.setText("500");
         jd_mantener.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
 
-        jSpinner7.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jd_mantener.getContentPane().add(jSpinner7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, -1));
+        jp_bi1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jd_mantener.getContentPane().add(jp_bi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, -1));
 
-        jSpinner8.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jd_mantener.getContentPane().add(jSpinner8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 80, -1));
+        jp_bi5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jd_mantener.getContentPane().add(jp_bi5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 80, -1));
 
-        jButton9.setText("Retirar");
+        jButton9.setText("Depositar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         jd_mantener.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 80, -1));
+
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton17.setText("Retirar");
+        jd_mantener.getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 30));
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papers.co-se68-blurry-background-sunrise-gradation-blur-40-wallpaper.jpg"))); // NOI18N
         jd_mantener.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 420));
 
+        jd_crearATM.setUndecorated(true);
+        jd_crearATM.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel37.setText("100");
+        jd_crearATM.getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
+
+        jLabel38.setText("500");
+        jd_crearATM.getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+
+        jLabel39.setText("Ubicacion");
+        jd_crearATM.getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+        jd_crearATM.getContentPane().add(yc_anioCA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, 30));
+        jd_crearATM.getContentPane().add(jp_100CA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 70, 30));
+        jd_crearATM.getContentPane().add(jp_500CA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 70, 30));
+        jd_crearATM.getContentPane().add(tf_ubica, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 120, 30));
+
+        jLabel40.setText("Año");
+        jd_crearATM.getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, -1));
+
+        jLabel41.setText("Periodo de mantenimiento");
+        jd_crearATM.getContentPane().add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+        jd_crearATM.getContentPane().add(tf_mant, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 120, 30));
+
+        jButton10.setText("Crear");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+        jd_crearATM.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 100, 40));
+
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton11.setText("Regresar");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+        jd_crearATM.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
+
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back_background.jpg"))); // NOI18N
+        jd_crearATM.getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 340));
+
+        jd_recibo.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        area2.setColumns(20);
+        area2.setRows(5);
+        jScrollPane1.setViewportView(area2);
+
+        jd_recibo.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 280, 230));
+
+        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoB.jpg"))); // NOI18N
+        jd_recibo.getContentPane().add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 380));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jb_iniciar1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
@@ -573,13 +771,12 @@ public class Examen extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        area2.setColumns(20);
-        area2.setRows(5);
-        jScrollPane1.setViewportView(area2);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 280, 200));
-
         jButton14.setText("Crear ATM");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 190, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/website.png"))); // NOI18N
@@ -617,27 +814,64 @@ public class Examen extends javax.swing.JFrame {
     private void jb_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_loginMouseClicked
         // TODO add your handling code here:
         boolean flag = true;
+        adminATM o = new adminATM("./ATM.cbm");
+        o.cargarArchivo();
 
-        //            adminBanda ban = new adminBanda("./Banda.cbm");
-        //            ban.cargarArchivo();
-        //            ArrayList band = ban.getListaBandas();
-        ////            for (int i = 0; i < band.size(); i++) {
-        if (nombre.equals(tf_userL.getText()) && contra.equals(pf_contra.getText())) {
+        adminUMantenimiento l = new adminUMantenimiento("./Mantenimiento.cbm");
+        l.cargarArchivo();
 
-            flag = false;
+        adminCliente m = new adminCliente("./Cliente.cbm");
+        m.cargarArchivo();
+
+        ArrayList us = l.getListaMante();
+        for (int i = 0; i < us.size(); i++) {
+            if (((UMantenimiento) us.get(i)).getId() == Integer.parseInt(tf_userL.getText()) && ((UMantenimiento) us.get(i)).getCotra().equals(pf_contra.getText())) {
+                flag = false;
+                posc = i;
+                Log log = new Log(((Usuario) m.getListaClientes().get(posc)), "Se hizo inicio de sesion", new Date());
+                o.getListatms().get(posAtm).getLogs().add(log);
+                o.escribirArchivo();
+
+                JOptionPane.showMessageDialog(null, "Bienvenido " + ((UMantenimiento) us.get(i)).getPnombre());
+
+                jd_iniciar.setVisible(false);
+                jd_mantener.pack();
+                jd_mantener.setModal(true);
+                jd_mantener.setLocationRelativeTo(this);
+                jd_mantener.setVisible(true);
+                break;
+            }
         }
-        //            }
 
-        if (flag == false) {
-            JOptionPane.showMessageDialog(null, "Se inició sesión con éxito");
+        ArrayList clie = m.getListaClientes();
+        for (int i = 0; i < clie.size(); i++) {
+            if (((Cliente) clie.get(i)).getId() == Integer.parseInt(tf_userL.getText()) && ((Cliente) clie.get(i)).getCotra().equals(pf_contra.getText())) {
+                flag = false;
+                posc = i;
 
-            jd_iniciar.setVisible(false);
-            jd_cliente.pack();
-            jd_cliente.setModal(true);
-            jd_cliente.setLocationRelativeTo(this);
-            jd_cliente.setVisible(true);
-        } else {
+                Log log = new Log(((Usuario) m.getListaClientes().get(posc)), "Se hizo inicio de sesion", new Date());
+                o.getListatms().get(posAtm).getLogs().add(log);
+                o.escribirArchivo();
+
+                llenarTabla();
+                llenarTablaG();
+                llenarTablaT();
+                JOptionPane.showMessageDialog(null, "Bienvenido " + ((Cliente) clie.get(i)).getPnombre());
+                jd_iniciar.setVisible(false);
+                jd_cliente.pack();
+                jd_cliente.setModal(true);
+                jd_cliente.setLocationRelativeTo(this);
+                jd_cliente.setVisible(true);
+                break;
+            }
+        }
+
+        if (flag == true) {
+            JOptionPane.showMessageDialog(null, "Usurio y/o contrasena incorrecta");
+
             con++;
+        } else {
+
         }
 
         if (con >= 5) {
@@ -668,10 +902,439 @@ public class Examen extends javax.swing.JFrame {
         jd_iniciar.setVisible(true);
     }//GEN-LAST:event_jButton12MouseClicked
 
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        jd_crearATM.pack();
+        jd_crearATM.setModal(true);
+        jd_crearATM.setLocationRelativeTo(this);
+        jd_crearATM.setVisible(true);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        //crear atm
+        adminATM l = new adminATM("./ATM.cbm");
+        l.cargarArchivo();
+
+        int cant1 = Integer.parseInt(jp_100CA.getValue().toString());
+        int cant5 = Integer.parseInt(jp_500CA.getValue().toString());
+
+        int atms = l.getListatms().size();
+
+        int id = atms + ran.nextInt(90000);
+
+        int anio = yc_anioCA.getYear();
+
+        ATM atm = new ATM(cant1, cant5, tf_ubica.getText(), id, anio, tf_mant.getText());
+
+        l.setATM(atm);
+        l.escribirArchivo();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(l.getListatms().toArray());
+        cb_atm.setModel(modelo);
+
+        JOptionPane.showMessageDialog(null, "ATM creado con exito, el id es " + id);
+
+        tf_ubica.setText("");
+        tf_mant.setText("");
+        
+
+        jd_crearATM.setVisible(false);
+
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+        jd_crearATM.setVisible(false);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        String cuen = JOptionPane.showInputDialog("Ingrese el numero de cuenta (entero)");
+        int cuenta = Integer.parseInt(cuen);
+
+        String sal = JOptionPane.showInputDialog("Ingrese el saldo (entero)");
+        double saldo = Double.parseDouble(sal);
+
+        adminCliente l = new adminCliente("./Cliente.cbm");
+        l.cargarArchivo();
+
+        int o = l.getListaClientes().size();
+        o++;
+        int id = Integer.parseInt("" + o + o + o + o);
+
+        Cuenta c = new Cuenta(cuenta, saldo, id);
+
+        int anio = yc_naci.getYear();
+        int afi = yc_afi.getYear();
+
+        Cliente cliente = new Cliente(id, tf_primer.getText(), tf_segundo.getText(), tf_primerA.getText(), pf_contraR.getText(), tf_segundoA.getText(), anio, afi);
+        cliente.getCuentas().add(c);
+
+        l.setCliente(cliente);
+        l.escribirArchivo();
+
+        JOptionPane.showMessageDialog(null, "Cliente creado con exito. Su id es: " + id);
+
+        tf_primer.setText("");
+        tf_primerA.setText("");
+        tf_segundoA.setText("");
+        tf_segundo.setText("");
+        pf_contraR.setText("");
+
+        jd_registrar.setVisible(false);
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+
+        adminUMantenimiento l = new adminUMantenimiento("./Mantenimiento.cbm");
+        l.cargarArchivo();
+
+        int o = l.getListaMante().size();
+        o++;
+        int id = Integer.parseInt("" + o + o + o + o + o);
+
+        int anio = yc_naci.getYear();
+        int afi = yc_afi.getYear();
+
+        UMantenimiento mante = new UMantenimiento(id, tf_primer.getText(), tf_segundo.getText(), tf_primerA.getText(), pf_contraR.getText(), tf_segundoA.getText(), anio, afi);
+
+        l.setUMantenimiento(mante);
+        l.escribirArchivo();
+
+        JOptionPane.showMessageDialog(null, "Usuario de mantenimiento creado con exito. Su id es: " + id);
+
+        tf_primer.setText("");
+        tf_primerA.setText("");
+        tf_segundoA.setText("");
+        tf_segundo.setText("");
+        pf_contraR.setText("");
+
+        jd_registrar.setVisible(false);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        // TODO add your handling code here:
+        jd_atms.setVisible(false);
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        //retirar del atm
+        double tot = 0;
+
+        adminCliente m = new adminCliente("./Cliente.cbm");
+        adminATM l = new adminATM("./ATM.cbm");
+
+        boolean b1 = true, b5 = true, din = true, temp = true;
+        while (temp) {
+            if (tablaPersonalR.getSelectedRow() >= 0) {
+                int clein = tablaPersonalR.getSelectedRow();
+
+                m.cargarArchivo();
+
+                int cant1, cant5;
+                l.cargarArchivo();
+                cant1 = l.getListatms().get(posAtm).getCant100();
+                cant5 = l.getListatms().get(posAtm).getCant500();
+
+                int ret1, ret5;
+                ret1 = Integer.parseInt(jp_bille1.getValue().toString()) * 100;
+                ret5 = Integer.parseInt(jp_bille5.getValue().toString()) * 500;
+
+                if (Integer.parseInt(jp_bille1.getValue().toString()) != 0) {
+                    if (ret1 > cant1) {
+                        JOptionPane.showMessageDialog(null, "El cajero no tiene suficientes billetes de 100");
+                        break;
+                    }
+                }
+
+                if (Integer.parseInt(jp_bille1.getValue().toString()) != 0) {
+                    if (ret5 > cant5) {
+                        JOptionPane.showMessageDialog(null, "El cajero no tiene suficientes billetes de 500");
+                        break;
+                    }
+                }
+
+                if (m.getListaClientes().get(posc).getCuentas().get(clein).getSaldo() < (ret1 + ret5)) {
+                    JOptionPane.showMessageDialog(null, "Usted no tiene suficiente dinero");
+                    din = false;
+                    break;
+                }
+
+                tot = (ret1 + ret5);
+                m.getListaClientes().get(posc).getCuentas().get(clein).setSaldo(m.getListaClientes().get(posc).getCuentas().get(clein).getSaldo() - tot);
+
+                l.getListatms().get(posAtm).setCant100(l.getListatms().get(posAtm).getCant100() - (ret1 / 100));
+                l.getListatms().get(posAtm).setCant500(l.getListatms().get(posAtm).getCant500() - (ret5 / 500));
+                l.escribirArchivo();
+
+                Date h = new Date();
+
+                Transaccion trans = new Transaccion(m.getListaClientes().get(posc).getCuentas().get(clein).getNumCuenta(), "Retiro", h);
+                m.getListaClientes().get(posc).getTransacciones().add(trans);
+                m.escribirArchivo();
+                llenarTablaT();
+                temp = false;
+                JOptionPane.showMessageDialog(null, "El retiro se hizo con exito");
+                
+                area2.append("Recibo\n");
+                area2.append("\n" + "Nombre del cliente: " + m.getListaClientes().get(posc).getPnombre()+" "+ m.getListaClientes().get(posc).getPapellido() + "\n");
+                area2.append("\n");
+                area2.append("\n" + "Fecha actual: " + new Date() + "\n");
+                area2.append("\n");
+                area2.append("\n" + "Se hizo un retiro de: " + tot + "\n");
+
+                jd_recibo.setVisible(true);
+                break;
+
+            }
+        }
+
+        if (!temp) {
+            Log log = new Log(((Usuario) m.getListaClientes().get(posc)), "Se hizo un retiro de: " + tot, new Date());
+            l.getListatms().get(posAtm).getLogs().add(log);
+            l.escribirArchivo();
+        } else {
+            Log log = new Log(((Usuario) m.getListaClientes().get(posc)), "No se pudo hacer un retiro por falta de efectivo", new Date());
+            l.getListatms().get(posAtm).getLogs().add(log);
+            l.escribirArchivo();
+        }
+        llenarTabla();
+        llenarTablaG();
+        jd_cliente.setVisible(false);
+
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void cb_atmItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_atmItemStateChanged
+        // TODO add your handling code here:
+        posAtm = cb_atm.getSelectedIndex();
+    }//GEN-LAST:event_cb_atmItemStateChanged
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
         // TODO add your handling code here:
         jd_cliente.setVisible(false);
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        if (tablaPersonal.getSelectedRow() >= 0) {
+            int clein = tablaPersonal.getSelectedRow();
+
+            adminCliente m = new adminCliente("./Cliente.cbm");
+            m.cargarArchivo();
+
+            adminATM l = new adminATM("./ATM.cbm");
+            l.cargarArchivo();
+
+            int ret1, ret5;
+            ret1 = Integer.parseInt(jp_b1.getValue().toString()) * 100;
+            ret5 = Integer.parseInt(jp_b5.getValue().toString()) * 500;
+
+            double tot;
+            tot = (ret1 + ret5);
+            m.getListaClientes().get(posc).getCuentas().get(clein).setSaldo(m.getListaClientes().get(posc).getCuentas().get(clein).getSaldo() + tot);
+
+            l.getListatms().get(posAtm).setCant100(l.getListatms().get(posAtm).getCant100() + (ret1 / 100));
+            l.getListatms().get(posAtm).setCant500(l.getListatms().get(posAtm).getCant500() + (ret5 / 500));
+            l.escribirArchivo();
+            JOptionPane.showMessageDialog(null, "El deposito se hizo con exito");
+            Transaccion trans = new Transaccion(m.getListaClientes().get(posc).getCuentas().get(clein).getNumCuenta(), "Deposito", new Date());
+            m.getListaClientes().get(posc).getTransacciones().add(trans);
+            m.escribirArchivo();
+            llenarTablaT();
+            
+            area2.append("Recibo\n");
+                area2.append("\n" + "Nombre del cliente: " + m.getListaClientes().get(posc).getPnombre()+" "+ m.getListaClientes().get(posc).getPapellido() + "\n");
+                area2.append("\n");
+                area2.append("\n" + "Fecha actual: " + new Date() + "\n");
+                area2.append("\n");
+                area2.append("\n" + "Se hizo un deposito de: " + tot + "\n");
+
+            Log log = new Log(((Usuario) m.getListaClientes().get(posc)), "Se hizo un deposito de: " + tot, new Date());
+            l.getListatms().get(posAtm).getLogs().add(log);
+            l.escribirArchivo();
+
+            llenarTabla();
+            llenarTablaG();
+            jd_recibo.setVisible(true);
+            jd_cliente.setVisible(false);
+
+        }
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        // TODO add your handling code here:
+        adminCliente m = new adminCliente("./Cliente.cbm");
+        m.cargarArchivo();
+
+        if (Integer.parseInt(tf_idC.getText()) == (m.getListaClientes().get(posc).getId())) {
+            int ncuenta = Integer.parseInt(ft_cuentaC.getText());
+            double saldo = Double.parseDouble(jp_saldoC.getValue().toString());
+            m.getListaClientes().get(posc).getCuentas().add(new Cuenta(ncuenta, saldo, Integer.parseInt(tf_idC.getText())));
+            m.escribirArchivo();
+            JOptionPane.showMessageDialog(null, "Cuenta creada con exito");
+            llenarTabla();
+            llenarTablaG();
+            tf_idC.setText("");
+            ft_cuentaC.setText("");
+            jd_cliente.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "No es el mismo ID");
+        }
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        if (tablaTodos.getSelectedRow() >= 0) {
+            int clein = tablaTodos.getSelectedRow();
+            
+            adminCliente m = new adminCliente("./Cliente.cbm");
+            m.cargarArchivo();
+
+            adminATM l = new adminATM("./ATM.cbm");
+            l.cargarArchivo();
+
+            int ret1, ret5;
+            ret1 = Integer.parseInt(jp_b1.getValue().toString()) * 100;
+            ret5 = Integer.parseInt(jp_b5.getValue().toString()) * 500;
+
+            double tot;
+            tot = tra.get(tablaTodos.getSelectedRow()).getSaldo()-(ret1 + ret5);
+           tra.get(tablaTodos.getSelectedRow()).setSaldo(tot);
+
+            l.getListatms().get(posAtm).setCant100(l.getListatms().get(posAtm).getCant100() + (ret1 / 100));
+            l.getListatms().get(posAtm).setCant500(l.getListatms().get(posAtm).getCant500() + (ret5 / 500));
+            l.escribirArchivo();
+            JOptionPane.showMessageDialog(null, "El deposito se hizo con exito");
+            Transaccion trans = new Transaccion(m.getListaClientes().get(posc).getCuentas().get(clein).getNumCuenta(), "Deposito", new Date());
+            m.getListaClientes().get(posc).getTransacciones().add(trans);
+            m.escribirArchivo();
+            llenarTablaT();
+
+            llenarTabla();
+            llenarTablaG();
+            jd_cliente.setVisible(false);
+
+        }
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        adminATM o = new adminATM("./ATM.cbm");
+        o.cargarArchivo();
+
+        String k = JOptionPane.showInputDialog("Ingrese su ID");
+        int id = Integer.parseInt(k);
+
+        String c = JOptionPane.showInputDialog("Ingrese su contraseña");
+        adminUMantenimiento l = new adminUMantenimiento("./Mantenimiento.cbm");
+        l.cargarArchivo();
+        boolean flag = false;
+
+        int po = Integer.parseInt(jp_bi1.getValue().toString());
+        int pa = Integer.parseInt(jp_bi5.getValue().toString());
+        int tot = po + pa;
+
+        ArrayList us = l.getListaMante();
+        if (((UMantenimiento) us.get(posc)).getId() == id && ((UMantenimiento) us.get(posc)).getCotra().equals(c)) {
+            flag = true;
+
+            JOptionPane.showMessageDialog(null, "El deposito se hizo con exito");
+            Log log = new Log(((Usuario) l.getListaMante().get(posc)), "Se hizo un deposito al atm de: " + tot, new Date());
+            o.getListatms().get(posAtm).getLogs().add(log);
+            o.escribirArchivo();
+            jd_mantener.setVisible(false);
+        }
+
+        if (flag == false) {
+            JOptionPane.showMessageDialog(null, "Usuario incorrecto");
+            Log log = new Log(((Usuario) l.getListaMante().get(posc)), "Se hizo un intento de deposito al atm de: " + tot, new Date());
+            o.getListatms().get(posAtm).getLogs().add(log);
+            o.escribirArchivo();
+            jd_mantener.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    public void llenarTabla() {
+        adminCliente ao = new adminCliente("./Cliente.cbm");
+        ao.cargarArchivo();
+
+        ArrayList<Cuenta> aux = ao.getListaClientes().get(posc).getCuentas();
+
+        DefaultTableModel nueva = (DefaultTableModel) tablaPersonalR.getModel();
+        DefaultTableModel personal = (DefaultTableModel) tablaPersonal.getModel();
+        DefaultTableModel estado = (DefaultTableModel) tablaPersonalE.getModel();
+
+        for (int i = nueva.getRowCount() - 1; i >= 0; i--) {
+            nueva.removeRow(i);
+            personal.removeRow(i);
+            estado.removeRow(i);
+
+        }
+
+        for (int i = 0; i < aux.size(); i++) {
+            Object[] vehicu = {aux.get(i).getNumCuenta(), aux.get(i).getSaldo()};
+            nueva.addRow(vehicu);
+            personal.addRow(vehicu);
+            estado.addRow(vehicu);
+
+        }
+        tablaPersonalR.setModel(nueva);
+        tablaPersonal.setModel(personal);
+        tablaPersonalE.setModel(estado);
+    }
+
+    public void llenarTablaG() {
+        adminCliente ao = new adminCliente("./Cliente.cbm");
+        ao.cargarArchivo();
+
+        ArrayList<Cliente> aux = ao.getListaClientes();
+
+        DefaultTableModel nueva = (DefaultTableModel) tablaTodos.getModel();
+
+        for (int i = nueva.getRowCount() - 1; i >= 0; i--) {
+            nueva.removeRow(i);
+
+        }
+
+        for (int i = 0; i < aux.size(); i++) {
+            for (int j = 0; j < aux.get(i).getCuentas().size(); j++) {
+                Object[] vehicu = {aux.get(i).getCuentas().get(j).getNumCuenta(), aux.get(i).getCuentas().get(j).getSaldo()};
+                tra.add(aux.get(i).getCuentas().get(j));
+                nueva.addRow(vehicu);
+            }
+        }
+        tablaTodos.setModel(nueva);
+    }
+    
+    ArrayList<Cuenta> tra;
+
+    public void llenarTablaT() {
+        adminCliente ao = new adminCliente("./Cliente.cbm");
+        ao.cargarArchivo();
+
+        ArrayList<Cliente> aux = ao.getListaClientes();
+
+        DefaultTableModel nueva = (DefaultTableModel) tablaT.getModel();
+
+        for (int i = nueva.getRowCount() - 1; i >= 0; i--) {
+            nueva.removeRow(i);
+
+        }
+
+        for (int i = 0; i < aux.size(); i++) {
+            for (int j = 0; j < aux.get(i).getTransacciones().size(); j++) {
+                Object[] vehicu = {aux.get(i).getTransacciones().get(j).getNumCuenta(), aux.get(i).getTransacciones().get(j).getDescripcion(), aux.get(i).getTransacciones().get(j).getFecha()};
+                nueva.addRow(vehicu);
+            }
+        }
+        tablaT.setModel(nueva);
+    }
 
     /**
      * @param args the command line arguments
@@ -710,11 +1373,17 @@ public class Examen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea area2;
+    private javax.swing.JComboBox<String> cb_atm;
     private javax.swing.JFormattedTextField ft_cuentaC;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -723,7 +1392,6 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -754,8 +1422,26 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -772,43 +1458,55 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
-    private com.toedter.calendar.JYearChooser jYearChooser2;
     private javax.swing.JButton jb_iniciar1;
     private javax.swing.JButton jb_login;
     private javax.swing.JButton jb_registrar1;
     private javax.swing.JDialog jd_atms;
     private javax.swing.JDialog jd_cliente;
+    private javax.swing.JDialog jd_crearATM;
     private javax.swing.JDialog jd_iniciar;
     private javax.swing.JDialog jd_mantener;
     private javax.swing.JDialog jd_opcion;
+    private javax.swing.JDialog jd_recibo;
     private javax.swing.JDialog jd_registrar;
     private javax.swing.JDialog jd_trans;
     private javax.swing.JLabel jl_hora;
     private javax.swing.JLabel jl_op;
-    private javax.swing.JSpinner jp_spinner;
+    private javax.swing.JSpinner jp_100CA;
+    private javax.swing.JSpinner jp_500CA;
+    private javax.swing.JSpinner jp_b1;
+    private javax.swing.JSpinner jp_b5;
+    private javax.swing.JSpinner jp_bi1;
+    private javax.swing.JSpinner jp_bi5;
+    private javax.swing.JSpinner jp_bille1;
+    private javax.swing.JSpinner jp_bille5;
+    private javax.swing.JSpinner jp_saldoC;
     private javax.swing.JLabel lb_foto;
     private javax.swing.JPasswordField pf_contra;
     private javax.swing.JPasswordField pf_contraR;
     private javax.swing.JTable tablaPersonal;
     private javax.swing.JTable tablaPersonalE;
+    private javax.swing.JTable tablaPersonalR;
+    private javax.swing.JTable tablaT;
     private javax.swing.JTable tablaTodos;
     private javax.swing.JTextField tf_idC;
-    private javax.swing.JTextField tf_idR;
+    private javax.swing.JTextField tf_mant;
     private javax.swing.JTextField tf_primer;
     private javax.swing.JTextField tf_primerA;
     private javax.swing.JTextField tf_segundo;
     private javax.swing.JTextField tf_segundoA;
+    private javax.swing.JTextField tf_ubica;
     private javax.swing.JTextField tf_userL;
+    private com.toedter.calendar.JYearChooser yc_afi;
+    private com.toedter.calendar.JYearChooser yc_anioCA;
+    private com.toedter.calendar.JYearChooser yc_naci;
     // End of variables declaration//GEN-END:variables
+    Random ran = new Random();
+    int posAtm;
+    int posc;
+
 }

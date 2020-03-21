@@ -1,10 +1,13 @@
 
 package examen2_paulinaeuceda;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class ATM {
+
+public class ATM implements Serializable{
     private int cant100, cant500;
-    private Log log;
+    private ArrayList<Log> logs = new ArrayList();
     private String ubicacion;
     private int id, anio;
     private String tiempo;
@@ -12,10 +15,9 @@ public class ATM {
     public ATM() {
     }
 
-    public ATM(int cant100, int cant500, Log log, String ubicacion, int id, int anio, String tiempo) {
+    public ATM(int cant100, int cant500, String ubicacion, int id, int anio, String tiempo) {
         this.cant100 = cant100;
         this.cant500 = cant500;
-        this.log = log;
         this.ubicacion = ubicacion;
         this.id = id;
         this.anio = anio;
@@ -36,14 +38,6 @@ public class ATM {
 
     public void setCant500(int cant500) {
         this.cant500 = cant500;
-    }
-
-    public Log getLog() {
-        return log;
-    }
-
-    public void setLog(Log log) {
-        this.log = log;
     }
 
     public String getUbicacion() {
@@ -78,9 +72,19 @@ public class ATM {
         this.tiempo = tiempo;
     }
 
+    public ArrayList<Log> getLogs() {
+        return logs;
+    }
+
+    public void setLogs(ArrayList<Log> logs) {
+        this.logs = logs;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "ATM{" + "cant100=" + cant100 + ", cant500=" + cant500 + ", log=" + log + ", ubicacion=" + ubicacion + ", id=" + id + ", anio=" + anio + ", tiempo=" + tiempo + '}';
+        return ubicacion;
     }
     
     

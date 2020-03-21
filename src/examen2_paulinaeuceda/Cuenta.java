@@ -1,6 +1,8 @@
 package examen2_paulinaeuceda;
 
-public class Cuenta {
+import java.io.Serializable;
+
+public class Cuenta implements Serializable{
     private int NumCuenta;
     private double saldo;
     private int idprop;

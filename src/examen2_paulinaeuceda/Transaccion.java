@@ -1,10 +1,11 @@
 
 package examen2_paulinaeuceda;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class Transaccion {
+public class Transaccion implements Serializable{
     private int numCuenta;
     private String descripcion;
     private Date fecha;

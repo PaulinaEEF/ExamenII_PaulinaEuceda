@@ -10,8 +10,8 @@ public class UMantenimiento extends Usuario{
     public UMantenimiento() {
     }
 
-    public UMantenimiento(int id, String pnombre, String snombre, String papellido, String cotra, String sapellido, int anio) {
-        super(id, pnombre, snombre, papellido, cotra, sapellido, anio);
+    public UMantenimiento(int id, String pnombre, String snombre, String papellido, String cotra, String sapellido, int naci, int afi) {
+        super(id, pnombre, snombre, papellido, cotra, sapellido, naci, afi);
     }
 
     public ArrayList<ATM> getAtms() {
@@ -24,7 +24,7 @@ public class UMantenimiento extends Usuario{
 
     @Override
     public String toString() {
-        return "UMantenimiento{" + "atms=" + atms + '}';
+        return super.toString()+"UMantenimiento{" + "atms=" + atms + '}';
     }
     
     

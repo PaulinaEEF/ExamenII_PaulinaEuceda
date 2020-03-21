@@ -1,8 +1,9 @@
 package examen2_paulinaeuceda;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Log {
+public class Log implements Serializable{
     private Usuario usuario;
     private String accion;
     private Date fecha;

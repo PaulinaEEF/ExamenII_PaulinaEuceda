@@ -1,24 +1,28 @@
 
 package examen2_paulinaeuceda;
 
+import java.io.Serializable;
 
-public class Usuario {
+
+public class Usuario implements Serializable{
     private int id;
     private String pnombre, snombre, papellido, cotra, sapellido;
-    private int anio;
+    private int naci, afi;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String pnombre, String snombre, String papellido, String cotra, String sapellido, int anio) {
+    public Usuario(int id, String pnombre, String snombre, String papellido, String cotra, String sapellido, int naci, int afi) {
         this.id = id;
         this.pnombre = pnombre;
         this.snombre = snombre;
         this.papellido = papellido;
         this.cotra = cotra;
         this.sapellido = sapellido;
-        this.anio = anio;
+        this.naci = naci;
+        this.afi = afi;
     }
+
 
     public int getId() {
         return id;
@@ -68,18 +72,25 @@ public class Usuario {
         this.sapellido = sapellido;
     }
 
-    public int getAnio() {
-        return anio;
+    public int getNaci() {
+        return naci;
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setNaci(int naci) {
+        this.naci = naci;
+    }
+
+    public int getAfi() {
+        return afi;
+    }
+
+    public void setAfi(int afi) {
+        this.afi = afi;
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", pnombre=" + pnombre + ", snombre=" + snombre + ", papellido=" + papellido + ", cotra=" + cotra + ", sapellido=" + sapellido + ", anio=" + anio + '}';
+        return "Usuario{" + "id=" + id + ", pnombre=" + pnombre + ", snombre=" + snombre + ", papellido=" + papellido + ", cotra=" + cotra + ", sapellido=" + sapellido + ", naci=" + naci + ", afi=" + afi + '}';
     }
-    
-    
+
 }

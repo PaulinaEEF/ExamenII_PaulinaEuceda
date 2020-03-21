@@ -1,0 +1,12 @@
+Clientes:
+ID: 1111 Contra: 1234
+ID: 2222 Contra: 1234
+
+De Mantenimiento:
+ID: 11111 Contra: 1234
+ID: 22222 Contra: 1234
+
+ATMS
+Barrio Abajo y Barrio las Uvas: 100 billetes-17 500 billetes-20
+
+

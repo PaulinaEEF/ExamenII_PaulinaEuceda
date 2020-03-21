@@ -11,9 +11,11 @@ public class Cliente extends Usuario{
     public Cliente() {
     }
 
-    public Cliente(int id, String pnombre, String snombre, String papellido, String cotra, String sapellido, int anio) {
-        super(id, pnombre, snombre, papellido, cotra, sapellido, anio);
+    public Cliente(int id, String pnombre, String snombre, String papellido, String cotra, String sapellido, int naci, int afi) {
+        super(id, pnombre, snombre, papellido, cotra, sapellido, naci, afi);
     }
+
+    
 
     public ArrayList<Cuenta> getCuentas() {
         return cuentas;
@@ -33,7 +35,7 @@ public class Cliente extends Usuario{
 
     @Override
     public String toString() {
-        return "Cliente{" + "cuentas=" + cuentas + ", transacciones=" + transacciones + '}';
+        return super.toString()+"Cliente{" + "cuentas=" + cuentas + ", transacciones=" + transacciones + '}';
     }
     
 
